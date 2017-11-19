@@ -12,3 +12,14 @@ export class ExtendableError {
     this.stack = (new Error(message)).stack
   }
 }
+
+export function createErrorReducer(setErrorActionType) {
+  return (state = null, action) => {
+    switch (action.type) {
+      case setErrorActionType:
+        return action.error
+      default:
+        return state
+    }
+  }
+}
