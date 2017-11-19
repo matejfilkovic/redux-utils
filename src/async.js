@@ -1,10 +1,10 @@
 export function createAsyncIfNeedCall(
-  functionToCallWithState,
+  checkIfCallIsNeeded,
   asyncCallToPerform
 ) {
   return (param) => {
     return (dispatch, getState) => {
-      if (functionToCallWithState(getState())) {
+      if (checkIfCallIsNeeded(getState())) {
         return Promise.resolve()
       }
 
